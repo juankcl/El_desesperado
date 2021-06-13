@@ -23,7 +23,8 @@ void draw() {
 
 	dibujarEjes3D(50);
 	//noFill();
-	
+	rotateX(map(mouseX, 0, 1000, 0, width));
+
 	rotateX = mouseX;
 	rotateY = mouseY;
 
