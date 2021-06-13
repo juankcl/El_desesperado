@@ -9,7 +9,7 @@ float rotateY = 0;
 
 float rotation = 0;
 void setup() {
-	size(800, 800, P3D);
+	size(1200, 800, P3D);
 	//smooth(8);
 
 	s = loadShape("Cuarto.obj");
@@ -34,7 +34,7 @@ void draw() {
 	
 	translate(0, 0, 0);
 	scale(-1, 1, 1);
-	scale(50);
+	scale(20);
 	shape(s, 0, 0);
 
 
