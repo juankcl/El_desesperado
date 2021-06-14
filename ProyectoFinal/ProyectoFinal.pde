@@ -3,6 +3,7 @@ PImage img;
 float cx, cy, hw, hh, txscale = 1.0;
 PImage texture;
 float mul = 0.1;
+PGraphics pg;
 //3D
 PShape s[] = new PShape[14];
 float zoom = 150;
@@ -26,7 +27,7 @@ void setup() {
   hh = height *mul;
   cx = width *mul;
   cy = height *mul;
-  texture = loadImage("desesperado.png");
+  //texture = loadImage("desesperado.png");
 
   //Cargar objetos 3D
   s[0] = loadShape("Bed.obj");
@@ -52,13 +53,7 @@ void setup() {
 void draw() {
   background(255);
 
-  pushMatrix();
-  translate(-100, 0, 100);
-  rotateZ(radians(90));
-  rotateX(radians(-90));
-  image(img, 0, 0, width/10, height/10);
- 
-  popMatrix();
+  
 
   dibujarEjes3D(50);
   //noFill();
@@ -79,7 +74,14 @@ void draw() {
   for (int i = 0; i < s.length; ++i) {
     shape(s[i], 0, 0);
   }
-
+ 
+  pushMatrix();
+  translate(1.5, 0, 2);
+  rotateZ(radians(90));
+  rotateX(radians(-90));
+  image(img, 0, 0, width/300, height/300);
+  popMatrix();
+  
   delta = millis() - lastMillis;
   lastMillis = millis();
 
@@ -88,7 +90,7 @@ void draw() {
 
   /* Usar delta para que la velocidad de vuelta no
    	cambie con la velocidad a la que se ejecuta el programa */
-  rotation += 0.5 * (delta / 10);
+  rotation += 0.5 * (delta / 50);
 }
 
 void dibujarEjes3D(float dim) {
