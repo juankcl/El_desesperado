@@ -1,4 +1,4 @@
-PShape s;
+PShape s[] = new PShape[14];
 float zoom = 150;
 
 float delta = 0.0;
@@ -7,24 +7,37 @@ float lastMillis = 0.0;
 float rotateX = 0;
 float rotateY = 0;
 
-float rotation = 0;
+float rotation = 90;
 void setup() {
-	size(1200, 800, P3D);
-	//smooth(8);
+	size(800, 800, P3D);
+	smooth(8); // Suavizar las líneas
 
-	s = loadShape("Cuarto.obj");
+	s[0] = loadShape("Bed.obj");
+	s[1] = loadShape("Board.obj");
+	s[2] = loadShape("CeilingLamp.obj");
+	s[3] = loadShape("Cup.obj");
+	s[4] = loadShape("Desk.obj");
+	s[5] = loadShape("Floor.obj");
+	s[6] = loadShape("Lamp.obj");
+	s[7] = loadShape("Laptop.obj");
+	s[8] = loadShape("Outlet.obj");
+	s[9] = loadShape("Poster.obj");
+	s[10] = loadShape("Shelf.obj");
+	s[11] = loadShape("Walls.obj");
+	s[12] = loadShape("Window.obj");
+	// Las luces van al final
+	s[13] = loadShape("Lights.obj");
+
 	perspective(PI/3.0,(float)width/height,0.1,100000.0);
 	frameRate(1000);
 }
 
 void draw() {
 	background(255);
-	//lights();
 
 	dibujarEjes3D(50);
 	//noFill();
-	rotateX(map(mouseX, 0, 1000, 0, width));
-
+	
 	rotateX = mouseX;
 	rotateY = mouseY;
 
@@ -35,16 +48,22 @@ void draw() {
 	
 	translate(0, 0, 0);
 	scale(-1, 1, 1);
-	scale(20);
-	shape(s, 0, 0);
+	scale(50);
 
+	// Dibujar todo el fondo
+	for (int i = 0; i < s.length; ++i) {
+		shape(s[i], 0, 0);
+	}
 
 	delta = millis() - lastMillis;
 	lastMillis = millis();
 
-
+	// Poner los fps en el título
 	surface.setTitle(str(frameRate));
-	rotation += 5.0 * (delta / 100);
+
+	/* Usar delta para que la velocidad de vuelta no
+	cambie con la velocidad a la que se ejecuta el programa */
+	rotation += 0.5 * (delta / 100);
 }
 
 void dibujarEjes3D(float dim) {
