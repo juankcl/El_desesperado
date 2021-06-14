@@ -1,35 +1,20 @@
-PImage img;       // The source image
-int cellsize = 2; // Dimensions of each cell in the grid
-int cols, rows;   // Number of columns and rows in our system
+float cx, cy, hw, hh, txscale = 2.0;
+PImage texture;
 
-void setup() {
-  size(200, 200, P3D); 
-  img  = loadImage("des.jpg"); // Load the image
-  cols = width/cellsize;             // Calculate # of columns
-  rows = height/cellsize;            // Calculate # of rows
-}
+size(500, 500, P3D);
+textureMode(NORMAL);
+textureWrap(REPEAT);
+hw = width ;
+hh = height ;
+cx = width ;
+cy = height ;
+texture = loadImage("des.jpg");
 
-void draw() {
-  background(0);
-  loadPixels();
-  // Begin loop for columns
-  for ( int i = 0; i < cols;i++) {
-    // Begin loop for rows
-    for ( int j = 0; j < rows;j++) {
-      int x = i*cellsize + cellsize/2; // x position
-      int y = j*cellsize + cellsize/2; // y position
-      int loc = x + y*width;           // Pixel array location
-      color c = img.pixels[loc];       // Grab the color
-      // Calculate a z position as a function of mouseX and pixel brightness
-      float z = (mouseX/(float)width) * brightness(img.pixels[loc]) - 100.0;
-      // Translate to the location, set fill and stroke, and draw the rect
-      pushMatrix();
-      translate(x,y,z);
-      fill(c);
-      noStroke();
-      rectMode(CENTER);
-      rect(0,0,cellsize,cellsize);
-      popMatrix();
-    }
-  }
-}
+beginShape(QUADS);
+noStroke();
+texture(texture);
+vertex(cx - hw, cy - hh, 0.0, 0.0);
+vertex(cx + hw, cy - hh, txscale, 0.0);
+vertex(cx + hw, cy + hh, txscale, txscale);
+vertex(cx - hw, cy + hh, 0.0, txscale);
+endShape(CLOSE);
