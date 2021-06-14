@@ -18,15 +18,15 @@ void setup() {
   size(800, 800, P3D);
   smooth(8); // Suavizar las líneas
 
-  img = loadImage("des.jpg"); //imagen 2D
-  textureMode(NORMAL);
+  img = loadImage("desesperado.png"); //imagen 2D
+  //textureMode(NORMAL);
   //textureWrap(REPEAT);
 
   hw = width * mul;
   hh = height *mul;
   cx = width *mul;
   cy = height *mul;
-  texture = loadImage("des.jpg");
+  texture = loadImage("desesperado.png");
 
   //Cargar objetos 3D
   s[0] = loadShape("Bed.obj");
@@ -56,22 +56,8 @@ void draw() {
   translate(-100, 0, 100);
   rotateZ(radians(90));
   rotateX(radians(-90));
-  beginShape(QUADS);
-  noStroke();
-  texture(texture);
-  //vertex(cx - hw, cy - hh, 0.0, 0.0);
-  //vertex(cx + hw, cy - hh, txscale, 0.0);
-  //vertex(cx + hw, cy + hh, txscale, txscale);
-  //vertex(cx - hw, cy + hh, 0.0, txscale);
-
-  vertex(0, 0, 0, 0.0, 0.0);
-  vertex(100, 0, 0, txscale, 0.0);
-  
-  vertex(100, 100, 0, txscale, txscale);
-  vertex(0, 100, 0, 0.0, txscale);
-
-
-  endShape(CLOSE);
+  image(img, 0, 0, width/10, height/10);
+ 
   popMatrix();
 
   dibujarEjes3D(50);
@@ -102,7 +88,7 @@ void draw() {
 
   /* Usar delta para que la velocidad de vuelta no
    	cambie con la velocidad a la que se ejecuta el programa */
-  rotation += 0.5 * (delta / 100);
+  rotation += 0.5 * (delta / 10);
 }
 
 void dibujarEjes3D(float dim) {
@@ -123,8 +109,3 @@ void mouseWheel(MouseEvent event) {
   zoom += event.getCount() * 2;
   println(zoom);
 }
-
-
-
-
-
