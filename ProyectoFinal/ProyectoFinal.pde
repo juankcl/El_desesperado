@@ -1,3 +1,4 @@
+//figuras
 PShape s[] = new PShape[14];
 float zoom = 150;
 
@@ -8,10 +9,16 @@ float rotateX = 0;
 float rotateY = 0;
 
 float rotation = 90;
+
+//imagen
+PImage desesperado;
+
+
 void setup() {
 	size(800, 800, P3D);
 	smooth(8); // Suavizar las líneas
-
+  
+  //figuras obj
 	s[0] = loadShape("Bed.obj");
 	s[1] = loadShape("Board.obj");
 	s[2] = loadShape("CeilingLamp.obj");
@@ -28,6 +35,8 @@ void setup() {
 	// Las luces van al final
 	s[13] = loadShape("Lights.obj");
 
+  //imagen
+  desesperado = loadImage("desesperado.png");
 	perspective(PI/3.0,(float)width/height,0.1,100000.0);
 	frameRate(1000);
 }
@@ -45,7 +54,7 @@ void draw() {
 	float coordY = zoom * sin(radians(rotation)) + 0;
 	
 	camera(coordX, coordY, 80, 0, 0, 50, 0, 0, -1);
-	
+	//rotateY(radians(mouseX));
 	translate(0, 0, 0);
 	scale(-1, 1, 1);
 	scale(50);
@@ -54,7 +63,7 @@ void draw() {
 	for (int i = 0; i < s.length; ++i) {
 		shape(s[i], 0, 0);
 	}
-
+  image(desesperado,0,0, width/2, height/2);
 	delta = millis() - lastMillis;
 	lastMillis = millis();
 
