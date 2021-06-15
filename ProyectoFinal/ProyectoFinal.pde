@@ -1,6 +1,8 @@
 //Imagen 2D
 PImage desImg;
 PGraphics pg;
+float inter = 0;
+float interY= 0;
 //3D
 PShape s[] = new PShape[14];
 float zoom = 260;
@@ -12,6 +14,7 @@ float rotateX = 0;
 float rotateY = 0;
 
 float rotation = 180;
+float rotationY = 180;
 
 void setup() {
 	size(1280, 720, P3D);
@@ -47,10 +50,11 @@ void draw() {
 	rotateX = mouseX;
 	rotateY = mouseY;
 	
-	float coordX = zoom * cos(radians(rotation)) + 0;
-	float coordY = zoom * sin(radians(rotation)) + 0;
+	//float coordX = - zoom * cos(radians(rotation)) + 0;
+	float coordY = - zoom * sin(radians(rotation)) + 0;
+  float coordZ = zoom * sin(radians(rotationY)) + 0;
 
-	camera(coordX, coordY, 80, 70, 0, 40, 0, 0, -1);
+	camera(-260, coordY, coordZ , 70, 0, 40, 0, 0, -1);
 
 	translate(0, 0, 0);
 
@@ -89,6 +93,11 @@ void draw() {
 	/* Usar delta para que la velocidad de vuelta no
 	cambie con la velocidad a la que se ejecuta el programa */
 	//rotation += 0.5 * (delta / 50);
+  inter = map(mouseX, 0, 1280, -100, 100);
+  interY = map(mouseY, 0, 720, 160, 250);
+  rotation = 0.5 * (inter/15);
+  rotationY = 0.5 * (interY/5);
+  //println( coordY) ;
 }
 
 void dibujarEjes3D(float dim) {
