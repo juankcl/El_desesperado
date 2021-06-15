@@ -1,9 +1,10 @@
 //Imagen 2D
 PImage desImg;
-PGraphics pg;
 //3D
 PShape s[] = new PShape[14];
-float zoom = 260;
+float zoom = 280;
+// Virus
+VirusSpawner virus;
 
 float delta = 0.0;
 float lastMillis = 0.0;
@@ -18,6 +19,8 @@ void setup() {
 	smooth(8); // Suavizar las líneas
 
 	desImg = loadImage("desesperado.png"); //imagen 2D
+
+	virus = new VirusSpawner(24);
 
 	//Cargar objetos 3D
 	s[0] = loadShape("Bed.obj");
@@ -58,7 +61,7 @@ void draw() {
 	pushMatrix();
 		scale(-1, 1, 1);
 		scale(50);
-
+		translate(0, -0.3, 0);
 		// Dibujar todo el fondo
 		for (int i = 0; i < s.length; ++i) {
 		shape(s[i], 0, 0);
@@ -66,17 +69,18 @@ void draw() {
 	popMatrix();
 
 	pushMatrix();
-	float scale = 1.0/12.0;
-	rotateZ(radians(90));
-	rotateX(radians(-90));
+		float scale = 1.0/12.0;
+		rotateZ(radians(90));
+		rotateX(radians(-90));
 
-	// Dibujar Desesperado
-	pushMatrix();
-		translate(0, -30, 60);
-		image(desImg, 
-			-(desImg.width * scale) / 2.0, -(desImg.height * scale) / 2.0, // Poner su origen en el centro
-			desImg.width * scale, desImg.height * scale); // Poner el tamaño de la imagen escalada
-	popMatrix();
+		virus.draw();
+		// Dibujar Desesperado
+		pushMatrix();
+			translate(0, -30, 60);
+			image(desImg, 
+				-(desImg.width * scale) / 2.0, -(desImg.height * scale) / 2.0, // Poner su origen en el centro
+				desImg.width * scale, desImg.height * scale); // Poner el tamaño de la imagen escalada
+		popMatrix();
 
 	popMatrix();
 
