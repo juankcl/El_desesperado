@@ -161,19 +161,17 @@ void draw() {
     rect(20, 15, 60,height- 30, 10);
    popMatrix();
 	fill(255);
-  buton.pressed();
-  buton2.pressed();
-  buton3.pressed();
-  buton4.pressed();
-  buton5.pressed();
-  buton6.pressed();
-  buton7.pressed();
-  buton8.pressed();
-  buton9.pressed();
-  buton10.pressed();
-  buton11.pressed();
-  
-
+	buton.pressed();
+	buton2.pressed();
+	buton3.pressed();
+	buton4.pressed();
+	buton5.pressed();
+	buton6.pressed();
+	buton7.pressed();
+	buton8.pressed();
+	buton9.pressed();
+	buton10.pressed();
+	buton11.pressed();
 }
 
 void dibujarEjes3D(float dim) {
