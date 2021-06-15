@@ -13,7 +13,6 @@ void draw() {
     image(desImg, 
       -(desImg.width * scale) / 2.0, -(desImg.height * scale) / 2.0, // Poner su origen en el centro
       desImg.width * scale, desImg.height * scale); // Poner el tamaño de la imagen escalada
-  popMatrix();
   } else {
     fill(0); // Black
   }
