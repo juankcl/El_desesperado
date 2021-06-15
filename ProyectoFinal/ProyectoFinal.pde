@@ -4,8 +4,10 @@ PGraphics pg;
 float inter = 0;
 float interY= 0;
 //3D
-PShape s[] = new PShape[14];
+PShape s[] = new PShape[15];
 float zoom = 260;
+// Virus
+VirusSpawner virus;
 
 float delta = 0.0;
 float lastMillis = 0.0;
@@ -37,6 +39,8 @@ void setup() {
 
 	desImg = loadImage("desesperado.png"); //imagen 2D
 
+	virus = new VirusSpawner(24);
+
 	//Cargar objetos 3D
 	s[0] = loadShape("Bed.obj");
 	s[1] = loadShape("Board.obj");
@@ -51,8 +55,9 @@ void setup() {
 	s[10] = loadShape("Shelf.obj");
 	s[11] = loadShape("Walls.obj");
 	s[12] = loadShape("Window.obj");
+	s[13] = loadShape("Ceiling.obj");
 	// Las luces van al final
-	s[13] = loadShape("Lights.obj");
+	s[14] = loadShape("Lights.obj");
   
   // imagenes botones
   imgButton[0] = loadImage("Timeline/1.png");
@@ -108,7 +113,7 @@ void draw() {
 	pushMatrix();
 		scale(-1, 1, 1);
 		scale(50);
-
+		translate(0, -0.3, 0);
 		// Dibujar todo el fondo
 		for (int i = 0; i < s.length; ++i) {
 		shape(s[i], 0, 0);
@@ -116,17 +121,18 @@ void draw() {
 	popMatrix();
 
 	pushMatrix();
-	float scale = 1.0/12.0;
-	rotateZ(radians(90));
-	rotateX(radians(-90));
+		float scale = 1.0/12.0;
+		rotateZ(radians(90));
+		rotateX(radians(-90));
 
-	// Dibujar Desesperado
-	pushMatrix();
-		translate(0, -30, 60);
-		image(desImg, 
-			-(desImg.width * scale) / 2.0, -(desImg.height * scale) / 2.0, // Poner su origen en el centro
-			desImg.width * scale, desImg.height * scale); // Poner el tamaño de la imagen escalada
-	popMatrix();
+		virus.draw();
+		// Dibujar Desesperado
+		pushMatrix();
+			translate(0, -30, 60);
+			image(desImg, 
+				-(desImg.width * scale) / 2.0, -(desImg.height * scale) / 2.0, // Poner su origen en el centro
+				desImg.width * scale, desImg.height * scale); // Poner el tamaño de la imagen escalada
+		popMatrix();
 
 	popMatrix();
 
