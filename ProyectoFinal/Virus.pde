@@ -18,7 +18,7 @@ public class Virus {
 			virusImg.width * scale, virusImg.height * scale); // Escalar la imagen
 		
 		// dibujar cuerda
-		stroke(220);
+		stroke(220,220,220, 100);
 		line(0, -(virusImg.height * scale) / 2.0, 0,
 			0, -500, 0);
 
