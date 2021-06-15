@@ -16,6 +16,21 @@ float rotateY = 0;
 float rotation = 180;
 float rotationY = 180;
 
+//timeline - botnones
+Buttons buton;
+Buttons buton2;
+Buttons buton3;
+Buttons buton4;
+Buttons buton5;
+Buttons buton6;
+Buttons buton7;
+Buttons buton8;
+Buttons buton9;
+Buttons buton10;
+Buttons buton11;
+
+PImage imgButton[] = new PImage[11];
+
 void setup() {
 	size(1280, 720, P3D);
 	smooth(8); // Suavizar las líneas
@@ -38,7 +53,34 @@ void setup() {
 	s[12] = loadShape("Window.obj");
 	// Las luces van al final
 	s[13] = loadShape("Lights.obj");
+  
+  // imagenes botones
+  imgButton[0] = loadImage("Timeline/1.png");
+  imgButton[1] = loadImage("Timeline/2.png");
+  imgButton[2] = loadImage("Timeline/3.png");
+  imgButton[3] = loadImage("Timeline/4.png");
+  imgButton[4] = loadImage("Timeline/5.png");
+  imgButton[5] = loadImage("Timeline/6.png");
+  imgButton[6] = loadImage("Timeline/7.png");
+  imgButton[7] = loadImage("Timeline/8.png");
+  imgButton[8] = loadImage("Timeline/9.png");
+  imgButton[9] = loadImage("Timeline/10.png");
+  imgButton[10] = loadImage("Timeline/00_cubrebocas.png");
 
+    // timeline - botones declaracion  
+  buton   = new Buttons(50, 50, 30,  color(255,255,255), imgButton[10], true );  
+  buton2  = new Buttons(50,110, 30,   color(255,255,255), imgButton[0], false );
+  buton3  = new Buttons(50, 170, 30,  color(255,255,255), imgButton[1], false );
+  buton4  = new Buttons(50, 230, 30,  color(255,255,255), imgButton[2], false );
+  buton5  = new Buttons(50, 290, 30,  color(255,255,255), imgButton[3], false );
+  buton6  = new Buttons(50, 350, 30,  color(255,255,255), imgButton[4], false );
+  buton7  = new Buttons(50, 410, 30,  color(255,255,255), imgButton[5], false );
+  buton8  = new Buttons(50, 470, 30,  color(255,255,255), imgButton[6], false );
+  buton9  = new Buttons(50, 530, 30,  color(255,255,255), imgButton[7], false );
+  buton10 = new Buttons(50, 590, 30,  color(255,255,255), imgButton[8], false );
+  buton11 = new Buttons(50, 650, 30,  color(255,255,255), imgButton[9], false );
+  
+  //
 	perspective(radians(40), (float)width/height, 0.1, 100000.0);
 	frameRate(1000);
 }
@@ -107,8 +149,25 @@ void draw() {
 	camera();
 	ortho();
 	stroke(0);
+   pushMatrix();
+   //stroke(255);
+    fill(255,255,255, 100);
+    rect(20, 15, 60,height- 30, 10);
+   popMatrix();
 	fill(255);
-	circle(50, 100, 50);
+  buton.pressed();
+  buton2.pressed();
+  buton3.pressed();
+  buton4.pressed();
+  buton5.pressed();
+  buton6.pressed();
+  buton7.pressed();
+  buton8.pressed();
+  buton9.pressed();
+  buton10.pressed();
+  buton11.pressed();
+  
+
 }
 
 void dibujarEjes3D(float dim) {
