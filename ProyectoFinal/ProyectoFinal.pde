@@ -1,7 +1,7 @@
 //Imagen 2D
 PImage desImg;
 //3D
-PShape s[] = new PShape[14];
+PShape s[] = new PShape[15];
 float zoom = 280;
 // Virus
 VirusSpawner virus;
@@ -36,8 +36,9 @@ void setup() {
 	s[10] = loadShape("Shelf.obj");
 	s[11] = loadShape("Walls.obj");
 	s[12] = loadShape("Window.obj");
+	s[13] = loadShape("Ceiling.obj");
 	// Las luces van al final
-	s[13] = loadShape("Lights.obj");
+	s[14] = loadShape("Lights.obj");
 
 	perspective(radians(40), (float)width/height, 0.1, 100000.0);
 	frameRate(1000);
