@@ -4,7 +4,7 @@ public class VirusSpawner {
 
 	public VirusSpawner (int number) {
 		for (int i = 0; i < virusImgs.length; ++i) {
-			virusImgs[i] = loadImage("Virus"+ (i + 1) + ".png");
+			virusImgs[i] = loadImage("Models/Virus"+ (i + 1) + ".png");
 		}
 		
 			
@@ -15,9 +15,6 @@ public class VirusSpawner {
 		int divisions = 6;
 		int numberDivided = round(number / divisions);
 		int depthDivided = round(140.0 / divisions);
-
-		println("numberDivided: " + numberDivided);
-		println("depthDivided: " + depthDivided);
 
 		int counter = 0;
 		for (int i = 1; i < divisions + 1; i++) {

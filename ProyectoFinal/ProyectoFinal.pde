@@ -37,55 +37,55 @@ void setup() {
 	size(1280, 720, P3D);
 	smooth(8); // Suavizar las líneas
 
-	desImg = loadImage("desesperado.png"); //imagen 2D
+	desImg = loadImage("Models/desesperado.png"); //imagen 2D
 
 	virus = new VirusSpawner(24);
 
 	//Cargar objetos 3D
-	s[0] = loadShape("Bed.obj");
-	s[1] = loadShape("Board.obj");
-	s[2] = loadShape("CeilingLamp.obj");
-	s[3] = loadShape("Cup.obj");
-	s[4] = loadShape("Desk.obj");
-	s[5] = loadShape("Floor.obj");
-	s[6] = loadShape("Lamp.obj");
-	s[7] = loadShape("Laptop.obj");
-	s[8] = loadShape("Outlet.obj");
-	s[9] = loadShape("Poster.obj");
-	s[10] = loadShape("Shelf.obj");
-	s[11] = loadShape("Walls.obj");
-	s[12] = loadShape("Window.obj");
-	s[13] = loadShape("Ceiling.obj");
+	s[0] = loadShape("Models/Bed.obj");
+	s[1] = loadShape("Models/Board.obj");
+	s[2] = loadShape("Models/CeilingLamp.obj");
+	s[3] = loadShape("Models/Cup.obj");
+	s[4] = loadShape("Models/Desk.obj");
+	s[5] = loadShape("Models/Floor.obj");
+	s[6] = loadShape("Models/Lamp.obj");
+	s[7] = loadShape("Models/Laptop.obj");
+	s[8] = loadShape("Models/Outlet.obj");
+	s[9] = loadShape("Models/Poster.obj");
+	s[10] = loadShape("Models/Shelf.obj");
+	s[11] = loadShape("Models/Walls.obj");
+	s[12] = loadShape("Models/Window.obj");
+	s[13] = loadShape("Models/Ceiling.obj");
 	// Las luces van al final
-	s[14] = loadShape("Lights.obj");
+	s[14] = loadShape("Models/Lights.obj");
   
-  // imagenes botones
-  imgButton[0] = loadImage("Timeline/1.png");
-  imgButton[1] = loadImage("Timeline/2.png");
-  imgButton[2] = loadImage("Timeline/3.png");
-  imgButton[3] = loadImage("Timeline/4.png");
-  imgButton[4] = loadImage("Timeline/5.png");
-  imgButton[5] = loadImage("Timeline/6.png");
-  imgButton[6] = loadImage("Timeline/7.png");
-  imgButton[7] = loadImage("Timeline/8.png");
-  imgButton[8] = loadImage("Timeline/9.png");
-  imgButton[9] = loadImage("Timeline/10.png");
-  imgButton[10] = loadImage("Timeline/00_cubrebocas.png");
+	// imagenes botones
+	imgButton[0] = loadImage("Timeline/1.png");
+	imgButton[1] = loadImage("Timeline/2.png");
+	imgButton[2] = loadImage("Timeline/3.png");
+	imgButton[3] = loadImage("Timeline/4.png");
+	imgButton[4] = loadImage("Timeline/5.png");
+	imgButton[5] = loadImage("Timeline/6.png");
+	imgButton[6] = loadImage("Timeline/7.png");
+	imgButton[7] = loadImage("Timeline/8.png");
+	imgButton[8] = loadImage("Timeline/9.png");
+	imgButton[9] = loadImage("Timeline/10.png");
+	imgButton[10] = loadImage("Timeline/00_cubrebocas.png");
 
-    // timeline - botones declaracion  
-  buton   = new Buttons(50, 50, 30,  color(255,255,255), imgButton[10], true );  
-  buton2  = new Buttons(50,110, 30,   color(255,255,255), imgButton[0], false );
-  buton3  = new Buttons(50, 170, 30,  color(255,255,255), imgButton[1], false );
-  buton4  = new Buttons(50, 230, 30,  color(255,255,255), imgButton[2], false );
-  buton5  = new Buttons(50, 290, 30,  color(255,255,255), imgButton[3], false );
-  buton6  = new Buttons(50, 350, 30,  color(255,255,255), imgButton[4], false );
-  buton7  = new Buttons(50, 410, 30,  color(255,255,255), imgButton[5], false );
-  buton8  = new Buttons(50, 470, 30,  color(255,255,255), imgButton[6], false );
-  buton9  = new Buttons(50, 530, 30,  color(255,255,255), imgButton[7], false );
-  buton10 = new Buttons(50, 590, 30,  color(255,255,255), imgButton[8], false );
-  buton11 = new Buttons(50, 650, 30,  color(255,255,255), imgButton[9], false );
-  
-  //
+		// timeline - botones declaracion  
+	buton   = new Buttons(50, 50, 30,  color(255,255,255), imgButton[10], true );  
+	buton2  = new Buttons(50,110, 30,   color(255,255,255), imgButton[0], false );
+	buton3  = new Buttons(50, 170, 30,  color(255,255,255), imgButton[1], false );
+	buton4  = new Buttons(50, 230, 30,  color(255,255,255), imgButton[2], false );
+	buton5  = new Buttons(50, 290, 30,  color(255,255,255), imgButton[3], false );
+	buton6  = new Buttons(50, 350, 30,  color(255,255,255), imgButton[4], false );
+	buton7  = new Buttons(50, 410, 30,  color(255,255,255), imgButton[5], false );
+	buton8  = new Buttons(50, 470, 30,  color(255,255,255), imgButton[6], false );
+	buton9  = new Buttons(50, 530, 30,  color(255,255,255), imgButton[7], false );
+	buton10 = new Buttons(50, 590, 30,  color(255,255,255), imgButton[8], false );
+	buton11 = new Buttons(50, 650, 30,  color(255,255,255), imgButton[9], false );
+	
+	//
 	perspective(radians(40), (float)width/height, 0.1, 100000.0);
 	frameRate(1000);
 }
@@ -186,11 +186,4 @@ void dibujarEjes3D(float dim) {
 	// Eje X
 	stroke(0, 0, 255, 255);
 	line(0, 0, 0, 0, 0, dim);
-}
-
-
-
-void mouseWheel(MouseEvent event) {
-	zoom += event.getCount() * 2;
-	println(zoom);
 }
