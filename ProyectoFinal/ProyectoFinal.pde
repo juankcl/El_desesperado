@@ -45,18 +45,22 @@ void setup() {
 
 void draw() {
 	background(255);
-	dibujarEjes3D(50);
+
+	// 3D Va aqui
+	hint(ENABLE_DEPTH_TEST);
 
 	rotateX = mouseX;
 	rotateY = mouseY;
 	
 	//float coordX = - zoom * cos(radians(rotation)) + 0;
 	float coordY = - zoom * sin(radians(rotation)) + 0;
-  float coordZ = zoom * sin(radians(rotationY)) + 0;
+	float coordZ = zoom * sin(radians(rotationY)) + 0;
 
+	perspective(radians(40), (float)width/height, 0.1, 100000.0);
 	camera(-260, coordY, coordZ , 70, 0, 40, 0, 0, -1);
 
 	translate(0, 0, 0);
+	dibujarEjes3D(50);
 
 	// Dibujar objetos 3D
 	pushMatrix();
@@ -93,11 +97,18 @@ void draw() {
 	/* Usar delta para que la velocidad de vuelta no
 	cambie con la velocidad a la que se ejecuta el programa */
 	//rotation += 0.5 * (delta / 50);
-  inter = map(mouseX, 0, 1280, -100, 100);
-  interY = map(mouseY, 0, 720, 160, 250);
-  rotation = 0.5 * (inter/15);
-  rotationY = 0.5 * (interY/5);
-  //println( coordY) ;
+	inter = map(mouseX, 0, 1280, -100, 100);
+	interY = map(mouseY, 0, 720, 160, 250);
+	rotation = 0.5 * (inter/15);
+	rotationY = 0.5 * (interY/5);
+
+	// Interfaz va aqui
+	hint(DISABLE_DEPTH_TEST);
+	camera();
+	ortho();
+	stroke(0);
+	fill(255);
+	circle(50, 100, 50);
 }
 
 void dibujarEjes3D(float dim) {
